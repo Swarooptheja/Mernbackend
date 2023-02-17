@@ -47,6 +47,15 @@ Userrouterallbooks.post("/",authMiddleware, isAdmin, asyncHandler(async(req,res)
 
 
 //getdata ***********************************************
+
+Userrouterallbooks.get('/',asyncHandler(async(req,res)=>{
+  try{
+    res.send('welcome to the home page')
+  }
+  catch(err){
+    throw new Error(err)
+  }
+}))
 Userrouterallbooks.get("/allbooks",  asyncHandler(async (req, res) => {
     const {orderBy} = req.query
     try {
