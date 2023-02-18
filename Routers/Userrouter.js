@@ -749,8 +749,10 @@ Userrouterallbooks.get("/allbooks",  asyncHandler(async (req, res) => {
 
 Userrouterallbooks.post("/register",asyncHandler(async(req,res)=>{
     const email = req.body.email;
+    const mobile=req.body.mobile
   const findUser = await User.findOne({email});
-  if (!findUser) {
+  const findMobile=await User.findOne({mobile})
+  if (!findUser && !findMobile) {
     const newUser = await User.create(req.body);
     res.json(newUser);
   }
